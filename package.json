@@ -1,11 +1,16 @@
 {
   "name": "redux-starter",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-redux": "^6.0.0",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
+    "redux-pender": "^2.0.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,5 +26,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kylekoh/Redux-starter.git"
+  },
+  "author": "kyle koh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kylekoh/Redux-starter/issues"
+  },
+  "homepage": "https://github.com/Kylekoh/Redux-starter#readme"
 }
