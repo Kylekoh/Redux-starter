@@ -1,20 +1,45 @@
-import { handleActions, createAction } from 'redux-actions'
+import { pender } from 'redux-pender';
+import { createAction, handleActions } from 'redux-actions';
+import axios from 'axios';
 
-// set type of action 
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
-
-// set action creator fuction
-export const increment = createAction(INCREMENT);
-export const decrement = createAction(DECREMENT);
-
-// set initial state
-const initialState = {
-    value : 1
+function getPostAPI(postId) {
+    return axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 }
 
-// set reducer function
+// Set Action type
+const GET_POST = 'GET_POST';
+
+// Set Action creator
+export const getPost = createAction(GET_POST, getPostAPI)
+
+// Set initial state
+const initialState = {
+    data : {
+        title: '',
+        body: ''
+    }
+}
+
+// Set reducer function
 export default handleActions({
-    [INCREMENT]: (state, action) => state + 1,
-    [DECREMENT]: (state, action) => state - 1
-}, initialState)
+    ...pender({
+        type: GET_POST,
+        onSuccess: (state, action) => {
+            const { title, body } = action.payload.data;
+            return {
+                data: {
+                    title,
+                    body
+                }
+            }
+        },
+        onCancel: (state, action) => {
+            return {
+                data: {
+                    title: '취소됨',
+                    body: '취소됨'
+                }
+            }
+        }
+    })
+}, initialState);
